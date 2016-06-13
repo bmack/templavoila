@@ -11,8 +11,8 @@ plugin.tx_templavoila_pi1 = USER
 plugin.tx_templavoila_pi1.userFunc = Extension\Templavoila\Controller\FrontendController->main
 plugin.tx_templavoila_pi1.disableExplosivePreview = 1
 
-tt_content.tx_templavoila_pi1 = COA
-tt_content.tx_templavoila_pi1 {
+tt_content.templavoila_pi1 = COA
+tt_content.templavoila_pi1 {
 ' . ($_EXTCONF['enable.']['renderFCEHeader'] ? '
 	10 =< lib.stdheader
 	' : '') . '
@@ -36,7 +36,7 @@ tt_content.menu.20.3.indexField.data = register:tx_templavoila_pi1.current_field
 );
 
 // Adding Page Template Selector Fields to root line:
-$GLOBALS['TYPO3_CONF_VARS']['FE']['addRootLineFields'] .= ',tx_templavoila_ds,tx_templavoila_to,tx_templavoila_next_ds,tx_templavoila_next_to';
+$GLOBALS['TYPO3_CONF_VARS']['FE']['addRootLineFields'] .= ',tx_templavoila_ds,tx_templavoila_to,tx_templavoila_next_ds,tx_templavoila_next_to,storage_pid';
 
 // Register our classes at a the hooks:
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processDatamapClass']['templavoila'] = \Extension\Templavoila\Service\DataHandling\DataHandler::class;
@@ -69,8 +69,8 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['templavoila']['mod1']['renderPreviewCont
 $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['templavoila']['mod1']['renderPreviewContent']['div']      = \Extension\Templavoila\Controller\Preview\NullController::class;
 $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['templavoila']['mod1']['renderPreviewContent']['templavoila_pi1'] = \Extension\Templavoila\Controller\Preview\NullController::class;
 
-$GLOBALS['TYPO3_CONF_VARS']['BE']['AJAX']['tx_templavoila_mod1_ajax::moveRecord'] =
-	'EXT:templavoila/mod1/class.tx_templavoila_mod1_ajax.php:tx_templavoila_mod1_ajax->moveRecord';
+$GLOBALS['TYPO3_CONF_VARS']['BE']['AJAX']['Extension\\Templavoila\\Module\\Mod1\\Ajax::moveRecord'] =
+	'EXT:templavoila/Classes/Module/Mod1/Ajax->moveRecord';
 
-$GLOBALS['TYPO3_CONF_VARS']['BE']['AJAX']['tx_templavoila_cm1_ajax::getDisplayFileContent'] =
-	'EXT:templavoila/cm1/class.tx_templavoila_cm1_ajax.php:tx_templavoila_cm1_ajax->getDisplayFileContent';
+$GLOBALS['TYPO3_CONF_VARS']['BE']['AJAX']['Extension\\Templavoila\\Module\\Cm1\\Ajax::getDisplayFileContent'] =
+	'EXT:templavoila/Classes/Module/Cm1/Ajax->getDisplayFileContent';
